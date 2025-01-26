@@ -11,6 +11,31 @@ This project is designed to track time spent on various tasks and projects. It p
 
 ## Project Structure
 
+- `constant.py` : Constants and configurations
+- `etl.py` : Data ingestion and transformation
+- `main.py` : Entry point for the web app
+- `requirements.txt` : List of dependencies
+
+## Architecture
+![image](https://github.com/poomer/data_checkins/blob/main/images/architecture.png?raw=true)
+
+### Data Source
+ - the sole data source is a .csv file containing time-tracking information with 4 columns: user, hours, project, and timestamp. 
+
+### Data Extraction (Extract)
+ - Ingests the data from the .csv file into a pandas DataFrame.
+
+### Data Transformation (Transform)
+ - Cleans the data by removing missing values and converting the 'timestamp' column to datetime format.
+ - Rearranges the column names
+ - Translates non-English text into English text
+ - Convert string datetime to datetime format
+
+### Data Load (Load)
+ - Stores the transformed data in a SQLite database.
+
+### Web Service
+ - Provides a user-friendly interface for inputting and viewing time entries using Streamlit.
 
 
 ## Setup Instructions
