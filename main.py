@@ -25,7 +25,7 @@ def get_unique_users() -> tuple[str]:
     """
     with engine.connect() as conn:
         logger.info("Fetch a list of unique users")
-        exe = conn.execute(text('SELECT DISTINCT(user) FROM data_check'))
+        exe = conn.execute(text('SELECT DISTINCT(user) FROM data_check_ins'))
         result = exe.fetchall()
         result_tuple = tuple(name for (name,) in result)
     
@@ -49,7 +49,7 @@ def get_checkins(user):
 
     with engine.connect() as conn:
         logger.info("Get check-ins for a specific user")
-        query = text(f"SELECT * FROM data_check WHERE user = '{user}'")
+        query = text(f"SELECT * FROM data_check_ins WHERE user = '{user}'")
         result = conn.execute(query)
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
     return df
