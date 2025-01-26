@@ -73,14 +73,6 @@ if selected_user:
     st.write(f"The following is a list of check-ins for {selected_user}")
 
     st.dataframe(checkins, width=1000, height=500)
-
-    '''
-    # Safe version
-    if not checkins.empty:
-        st.write(f"The following is a list of check-ins for {selected_user}", checkins)
-    else:
-        st.write("No check-ins found for this user.")
-    '''
     
 
 
