@@ -17,7 +17,8 @@ This project is designed to track time spent on various tasks and projects. It p
 - `requirements.txt` : List of dependencies
 
 ## Architecture
-![image](https://github.com/poomer/data_checkins/blob/main/images/architecture.png?raw=true)
+![Uploading aws_solution-Basic solution.drawio.png…]()
+
 
 ### Data Source
  - the sole data source is a .csv file containing time-tracking information with 4 columns: user, hours, project, and timestamp. 
