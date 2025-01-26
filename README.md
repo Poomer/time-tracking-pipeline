@@ -17,8 +17,7 @@ This project is designed to track time spent on various tasks and projects. It p
 - `requirements.txt` : List of dependencies
 
 ## Architecture
-![Uploading aws_solution-Basic solution.drawio.png…]()
-
+![aws_solution-Basic solution drawio](https://github.com/user-attachments/assets/72140c96-2035-413b-a3ec-9f77e4810b0e)
 
 ### Data Source
  - the sole data source is a .csv file containing time-tracking information with 4 columns: user, hours, project, and timestamp. 
