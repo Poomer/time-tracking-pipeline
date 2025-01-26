@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd 
 from sqlalchemy import create_engine, text
 
+from constant import Constants
+
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -9,11 +11,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-DATABASE_URL = "sqlite:///data_checkins.db"
+DATABASE_URL = "sqlite:///" + Constants.database
 engine = create_engine(DATABASE_URL)
 
 # Fetch unique users
-def get_unique_users() -> tuple[str]:
+def get_unique_users(table_name:str=Constants.table_name) -> tuple[str]:
     """
     Fetch a list of unique users.
 
@@ -25,14 +27,14 @@ def get_unique_users() -> tuple[str]:
     """
     with engine.connect() as conn:
         logger.info("Fetch a list of unique users")
-        exe = conn.execute(text('SELECT DISTINCT(user) FROM data_check_ins'))
+        exe = conn.execute(text(f"SELECT DISTINCT(user) FROM {table_name}"))
         result = exe.fetchall()
         result_tuple = tuple(name for (name,) in result)
     
     return result_tuple
 
 # Fetch check-ins for a specific user
-def get_checkins(user):
+def get_checkins(user:str, table_name:str=Constants.table_name) -> pd.DataFrame:
     """
     Fetch all check-ins for a specific user.
 
@@ -49,7 +51,7 @@ def get_checkins(user):
 
     with engine.connect() as conn:
         logger.info("Get check-ins for a specific user")
-        query = text(f"SELECT * FROM data_check_ins WHERE user = '{user}'")
+        query = text(f"SELECT * FROM {table_name} WHERE user = '{user}'")
         result = conn.execute(query)
         df = pd.DataFrame(result.fetchall(), columns=result.keys())
     return df
