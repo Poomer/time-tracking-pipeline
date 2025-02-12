@@ -1,4 +1,4 @@
-# tm-time-tracking
+# time-tracking-pipeline
 
 ## Overview
 This project is designed to track time spent on various tasks and projects. It provides a user-friendly interface for inputting and viewing time entries, making it easier to manage and analyze time usage.
